@@ -1,3 +1,4 @@
-<p>
-  buscador works!
-</p>
+<ion-searchbar
+  (ionInput)="manejarInput($event)"
+  [debounce]="1000"
+/>

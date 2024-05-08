@@ -1,12 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>inicio</ion-title>
+    <ion-title>Buscador de Películas</ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar></ion-searchbar>
+    <app-buscador (pelisChanged)="pelisChanged($event)" />
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <app-buscador />
+  <app-listado-peliculas [peliculas]="peliculasEncontradas" />
 </ion-content>

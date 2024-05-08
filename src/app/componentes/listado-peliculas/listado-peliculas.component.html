@@ -1,0 +1,9 @@
+<ion-list>
+  <ion-item *ngFor="let p of peliculas">
+    <ion-img [src]="p.imagen" />
+    <ion-label>
+      <h2>{{p.titulo}}</h2>
+      <p>{{p.anno}}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>

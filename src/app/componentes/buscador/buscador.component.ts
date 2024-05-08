@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IonicModule, SearchbarInputEventDetail } from '@ionic/angular'
+import { IonSearchbarCustomEvent } from '@ionic/core';
+import { Pelicula } from 'src/app/modelos/pelicula';
+import { PeliculasService } from 'src/app/servicios/peliculas.service';
 
 @Component({
   selector: 'app-buscador',
@@ -10,8 +13,16 @@ import { IonicModule } from '@ionic/angular'
 })
 export class BuscadorComponent  implements OnInit {
 
-  constructor() { }
+  @Output() pelisChanged =  new EventEmitter<Pelicula[]>()
+
+  constructor(private peliService:PeliculasService) { }
 
   ngOnInit() {}
+
+  manejarInput($event: IonSearchbarCustomEvent<SearchbarInputEventDetail>) {
+    const termino:string = $event.target.value ?? ''
+    const peliculas = this.peliService.buscar(termino)
+    this.pelisChanged.emit(peliculas)
+  }
 
 }

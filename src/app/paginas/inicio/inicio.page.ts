@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 //import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { IonicModule } from '@ionic/angular'
 import { BuscadorComponent } from 'src/app/componentes/buscador/buscador.component';
+import { Pelicula } from 'src/app/modelos/pelicula';
+import { ListadoPeliculasComponent } from 'src/app/componentes/listado-peliculas/listado-peliculas.component';
 
 @Component({
   selector: 'app-inicio',
@@ -11,13 +13,17 @@ import { BuscadorComponent } from 'src/app/componentes/buscador/buscador.compone
   styleUrls: ['./inicio.page.scss'],
   standalone: true,
   //imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
-  imports: [IonicModule, BuscadorComponent]
+  imports: [IonicModule, BuscadorComponent, ListadoPeliculasComponent]
 })
 export class InicioPage implements OnInit {
 
+  peliculasEncontradas:Pelicula[] = []
+
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  pelisChanged(pelis: Pelicula[]) {
+    this.peliculasEncontradas = pelis
+  }
 }
